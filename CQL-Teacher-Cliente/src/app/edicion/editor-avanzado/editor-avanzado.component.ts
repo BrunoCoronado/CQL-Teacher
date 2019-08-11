@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorAvanzadoComponent implements OnInit {
 
+  contenido: string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  correrEntrada(){
+    console.log(this.contenido);
   }
 
 }

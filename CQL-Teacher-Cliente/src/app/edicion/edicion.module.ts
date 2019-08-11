@@ -7,14 +7,15 @@ import { EditorIntermedioComponent } from './editor-intermedio/editor-intermedio
 import { EditorAvanzadoComponent } from './editor-avanzado/editor-avanzado.component';
 
 import { EdicionRoutingModule } from './edicion.routing';
-
+import { FormsModule } from '@angular/forms'
 
 
 @NgModule({
   declarations: [PanelInformacionComponent, PanelSalidaComponent, EditorPrincipianteComponent, EditorIntermedioComponent, EditorAvanzadoComponent],
   imports: [
     CommonModule,
-    EdicionRoutingModule
+    EdicionRoutingModule,
+    FormsModule,
   ]
 })
 export class EdicionModule { }
