@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CQL_Teacher_Servidor.Analisis.Lup //namespace no acepta - -> remplazar por _
+namespace CQL_Teacher_Servidor.Analisis.Interpretes.Lup //namespace no acepta - -> remplazar por _
 {
     public class Gramatica_Lup : Grammar
     {

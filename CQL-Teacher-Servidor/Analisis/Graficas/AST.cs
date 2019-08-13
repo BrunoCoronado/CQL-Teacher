@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQL_Teacher_Servidor.sistema.graficador
+namespace CQL_Teacher_Servidor.Graficas.AST
 {
     class Grafica
     {

@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Analisis\CQL\" />
-    <Folder Include="Analisis\Chison\" />
+    <Folder Include="Analisis\Interpretes\CQL\" />
+    <Folder Include="Analisis\Interpretes\Chison\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
