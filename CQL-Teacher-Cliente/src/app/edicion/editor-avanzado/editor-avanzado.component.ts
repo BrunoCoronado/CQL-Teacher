@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EdicionService } from '../edicion.service';
 
 @Component({
   selector: 'app-editor-avanzado',
@@ -9,13 +10,16 @@ export class EditorAvanzadoComponent implements OnInit {
 
   contenido: string;
 
-  constructor() { }
+  constructor(private data : EdicionService) { }
 
   ngOnInit() {
   }
 
   correrEntrada(){
-    console.log(this.contenido);
+    this.data.postConsulta({ contenido: this.contenido }).subscribe( data => {
+      console.log(data)
+      this.contenido = "";
+    });
   }
 
 }
