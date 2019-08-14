@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQL_Teacher_API", "CQL_Teacher_API\CQL_Teacher_API.csproj", "{447A1C32-BAAE-4E03-8680-A1F8F8073583}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{447A1C32-BAAE-4E03-8680-A1F8F8073583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{447A1C32-BAAE-4E03-8680-A1F8F8073583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{447A1C32-BAAE-4E03-8680-A1F8F8073583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447A1C32-BAAE-4E03-8680-A1F8F8073583}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B268EA5-5A7E-4717-9E24-9123DACD5043}
+	EndGlobalSection
+EndGlobal

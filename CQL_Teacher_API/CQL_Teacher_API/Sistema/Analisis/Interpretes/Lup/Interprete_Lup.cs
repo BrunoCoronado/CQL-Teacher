@@ -2,15 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace CQL_Teacher_Servidor.Analisis.Interpretes.Lup
+namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.Lup
 {
-    public class Interprete_LUP : Grammar
+    public class Interprete_Lup: Grammar
     {
         public ParseTreeNode raiz;
 
-        public Interprete_LUP()
+        public Interprete_Lup()
         {
             raiz = null;
         }

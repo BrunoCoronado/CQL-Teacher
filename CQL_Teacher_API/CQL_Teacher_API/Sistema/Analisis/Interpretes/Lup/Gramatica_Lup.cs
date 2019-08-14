@@ -3,9 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace CQL_Teacher_Servidor.Analisis.Interpretes.Lup //namespace no acepta - -> remplazar por _
+namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.Lup
 {
     public class Gramatica_Lup : Grammar
     {
@@ -62,7 +62,7 @@ namespace CQL_Teacher_Servidor.Analisis.Interpretes.Lup //namespace no acepta - 
 
             CIERRE_ETIQUETA.Rule = corcheteAbre + menos;
 
-            ETIQUETA_PADRE.Rule = _login + corcheteCierra + ETIQUETA_USER +  ETIQUETA_PASS + CIERRE_ETIQUETA + _login
+            ETIQUETA_PADRE.Rule = _login + corcheteCierra + ETIQUETA_USER + ETIQUETA_PASS + CIERRE_ETIQUETA + _login
                     | _logout + corcheteCierra + ETIQUETA_USER + CIERRE_ETIQUETA + _logout
                     | _query + corcheteCierra + ETIQUETA_USER + ETIQUETA_DATA + CIERRE_ETIQUETA + _query
                     | _struct + corcheteCierra + ETIQUETA_USER + CIERRE_ETIQUETA + _struct
