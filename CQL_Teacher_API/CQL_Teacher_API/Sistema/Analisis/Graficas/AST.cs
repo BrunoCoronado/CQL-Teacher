@@ -17,7 +17,7 @@ namespace CQL_Teacher_API.Sistema.Analisis.Graficas
         {
             try
             {
-                using (streamWriter = new StreamWriter("ast.txt"))
+                using (streamWriter = new StreamWriter(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/ast.txt")))
                 {
                     streamWriter.WriteLine("digraph G{");
                     String idNodo = "nodo" + (++contadorNodos).ToString();
@@ -30,13 +30,14 @@ namespace CQL_Teacher_API.Sistema.Analisis.Graficas
                     }
                     streamWriter.Write(conexiones + "\n}");
                 }
-                String comando = "/C dot.exe -Tsvg ast.txt -o ast.svg";
-                System.Diagnostics.Process.Start("CMD.exe", comando);
-                System.Diagnostics.Process.Start("ast.svg");
+                //String comando = "/C dot.exe -Tsvg " + System.Web.HttpContext.Current.Server.MapPath("~/App_Data/ast.txt") + " -o " + System.Web.HttpContext.Current.Server.MapPath("~/App_Data/ast.svg");
+                //System.Diagnostics.Debug.WriteLine(System.Web.HttpContext.Current.Server.MapPath(".") + "\\App_Data\\graficar.bat");
+                //System.Diagnostics.Process.Start(System.Web.HttpContext.Current.Server.MapPath(".") + "\\App_Data\\graficar.bat");
+                //System.Diagnostics.Process.Start(System.Web.HttpContext.Current.Server.MapPath("~/ast.svg"));
             }
             catch (Exception ex)
             {
-                abrirArchivo();
+                //abrirArchivo();
             }
         }
 
@@ -49,18 +50,6 @@ namespace CQL_Teacher_API.Sistema.Analisis.Graficas
             {
                 foreach (ParseTreeNode node in hijo.ChildNodes)
                     graficarHijos(idNodo, node);
-            }
-        }
-
-        private void abrirArchivo()
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("ast.svg");
-            }
-            catch (Exception ex)
-            {
-                abrirArchivo();
             }
         }
     }

@@ -16,7 +16,41 @@ export class EditorAvanzadoComponent implements OnInit {
   }
 
   correrEntrada(){
-    this.data.postConsulta({ contenido: this.contenido }).subscribe( data => {
+    const paquete_lup = `
+    [+QUERY]
+      [+USER]
+        user
+      [-USER]
+      [+DATA]
+        ${ this.contenido }
+      [-DATA]
+    [-QUERY]`;
+
+    const paquete_login = `
+    [+LOGIN]
+      [+USER]
+        user
+      [-USER]
+      [+PASS]
+        pass
+      [-PASS]
+    [-LOGIN]`;
+
+    const paquete_logout = `
+    [+LOGOUT]
+      [+USER]
+        user
+      [-USER]
+    [-LOGOUT]`;
+
+    const paquete_struct = `
+    [+STRUCT]
+      [+USER]
+        user
+      [-USER]
+    [-STRUCT]`;
+    
+    this.data.postConsulta({ contenido: paquete_struct }).subscribe( data => {
       console.log(data)
       this.contenido = "";
     });

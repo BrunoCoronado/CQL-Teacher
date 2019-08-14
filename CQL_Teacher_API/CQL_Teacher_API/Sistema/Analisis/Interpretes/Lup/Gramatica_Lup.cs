@@ -21,7 +21,7 @@ namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.Lup
             var aceptacion = ToTerm("$");
 
             //CONTENIDO
-            RegexBasedTerminal contenido = new RegexBasedTerminal("contenido", "[\\s\\S]*");
+            RegexBasedTerminal contenido = new RegexBasedTerminal("contenido", "[^\\[-]*");
 
             //ETIQUETAS
             var _login = ToTerm("login");
@@ -39,22 +39,26 @@ namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.Lup
             var menos = ToTerm("-");
 
             //NO TERMINALES
-            NonTerminal INICIO = new NonTerminal("INICIO");
-            NonTerminal ABRE_ETIQUETA = new NonTerminal("ABRE_ETIQUETA");
-            NonTerminal CIERRE_ETIQUETA = new NonTerminal("CIERRE_ETIQUETA");
-            NonTerminal ETIQUETA_PADRE = new NonTerminal("ETIQUETA_PADRE");
-            NonTerminal ETIQUETA_USER = new NonTerminal("ETIQUETA_USER");
-            NonTerminal ETIQUETA_PASS = new NonTerminal("ETIQUETA_PASS");
-            NonTerminal ETIQUETA_DATA = new NonTerminal("ETIQUETA_DATA");
-            NonTerminal CONTENIDO = new NonTerminal("CONTENIDO");
+            NonTerminal INICIO = new NonTerminal("INICIO"),
+                        ABRE_ETIQUETA = new NonTerminal("ABRE_ETIQUETA"),
+                        CIERRE_ETIQUETA = new NonTerminal("CIERRE_ETIQUETA"),
+                        ETIQUETA_PADRE = new NonTerminal("ETIQUETA_PADRE"),
+                        ETIQUETA_LOGIN = new NonTerminal("ETIQUETA_LOGIN"),
+                        ETIQUETA_LOGOUT = new NonTerminal("ETIQUETA_LOGOUT"),
+                        ETIQUETA_QUERY = new NonTerminal("ETIQUETA_QUERY"),
+                        ETIQUETA_STRUCT = new NonTerminal("ETIQUETA_STRUCT"),
+                        ETIQUETA_USER = new NonTerminal("ETIQUETA_USER"),
+                        ETIQUETA_PASS = new NonTerminal("ETIQUETA_PASS"),
+                        ETIQUETA_DATA = new NonTerminal("ETIQUETA_DATA"),
+                        CONTENIDO = new NonTerminal("CONTENIDO");
 
             //PREFERENCIAS
             this.Root = INICIO;
-            this.MarkPunctuation("$", "]", "[", "+", "-");
-            this.MarkTransient(INICIO);
+            this.MarkPunctuation("$", "]", "[", "+", "-", "user", "data", "query", "login", "pass", "logout", "struct");
+            this.MarkTransient(INICIO, ETIQUETA_PADRE, ABRE_ETIQUETA, CIERRE_ETIQUETA, CONTENIDO, ETIQUETA_USER, ETIQUETA_PASS, ETIQUETA_DATA);
 
             //GRAMATICA
-            INICIO.Rule = ABRE_ETIQUETA + ETIQUETA_PADRE + aceptacion
+            INICIO.Rule = ABRE_ETIQUETA  + ETIQUETA_PADRE + corcheteCierra + aceptacion
                     | aceptacion
             ;
 
@@ -62,11 +66,19 @@ namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.Lup
 
             CIERRE_ETIQUETA.Rule = corcheteAbre + menos;
 
-            ETIQUETA_PADRE.Rule = _login + corcheteCierra + ETIQUETA_USER + ETIQUETA_PASS + CIERRE_ETIQUETA + _login
-                    | _logout + corcheteCierra + ETIQUETA_USER + CIERRE_ETIQUETA + _logout
-                    | _query + corcheteCierra + ETIQUETA_USER + ETIQUETA_DATA + CIERRE_ETIQUETA + _query
-                    | _struct + corcheteCierra + ETIQUETA_USER + CIERRE_ETIQUETA + _struct
+            ETIQUETA_PADRE.Rule = ETIQUETA_LOGIN
+                    | ETIQUETA_LOGOUT
+                    | ETIQUETA_QUERY
+                    | ETIQUETA_STRUCT
             ;
+
+            ETIQUETA_LOGIN.Rule = _login + corcheteCierra + ETIQUETA_USER + ETIQUETA_PASS + CIERRE_ETIQUETA + _login;
+
+            ETIQUETA_LOGOUT.Rule = _logout + corcheteCierra + ETIQUETA_USER + CIERRE_ETIQUETA + _logout;
+
+            ETIQUETA_QUERY.Rule = _query + corcheteCierra + ETIQUETA_USER + ETIQUETA_DATA + CIERRE_ETIQUETA + _query;
+
+            ETIQUETA_STRUCT.Rule = _struct + corcheteCierra + ETIQUETA_USER + CIERRE_ETIQUETA + _struct;
 
             ETIQUETA_USER.Rule = ABRE_ETIQUETA + _user + CONTENIDO + _user + corcheteCierra;
 
@@ -81,10 +93,16 @@ namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.Lup
         public override void ReportParseError(ParsingContext context)
         {
             base.ReportParseError(context);
-            if (context.CurrentToken.ValueString.Contains("Invalid character")) { }
-            //errores.Add(new Error("ERROR LEXICO", "NO SE RECONOCIO ESTE SIMBOLO " + context.CurrentToken.ValueString.ToString(), (context.Source.Location.Line + 1), context.Source.Location.Column));
-            else { }
-            //errores.Add(new Error("ERROR SINTACTICO", "NO SE ESPERABA ESTE SIMBOLO " + context.CurrentToken.ValueString.ToString(), (context.Source.Location.Line + 1), context.Source.Location.Column));
+            if (context.CurrentToken.ValueString.Contains("Invalid character"))
+            {
+                //errores.Add(new Error("ERROR LEXICO", "NO SE RECONOCIO ESTE SIMBOLO " + context.CurrentToken.ValueString.ToString(), (context.Source.Location.Line + 1), context.Source.Location.Column));
+                System.Diagnostics.Debug.WriteLine("ERROR LEXICO", "NO SE RECONOCIO ESTE SIMBOLO " + context.CurrentToken.ValueString.ToString() + " EN LINEA " + (context.Source.Location.Line + 1)  + " Y COLUMNA " + context.Source.Location.Column);
+            }
+            else
+            {
+                //errores.Add(new Error("ERROR SINTACTICO", "NO SE ESPERABA ESTE SIMBOLO " + context.CurrentToken.ValueString.ToString(), (context.Source.Location.Line + 1), context.Source.Location.Column));
+                System.Diagnostics.Debug.WriteLine("ERROR SINTACTICO", "NO SE ESPERABA ESTE SIMBOLO " + context.CurrentToken.ValueString.ToString() + " EN LINEA " + (context.Source.Location.Line + 1) + " Y COLUMNA " + context.Source.Location.Column);
+            }
         }
     }
 }
