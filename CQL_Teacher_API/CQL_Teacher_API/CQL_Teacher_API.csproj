@@ -104,6 +104,10 @@
     <Compile Include="Models\Paquete_Lup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sistema\Analisis\Graficas\AST.cs" />
+    <Compile Include="Sistema\Analisis\Interpretes\CHISON\Gramaticac_CHISON.cs" />
+    <Compile Include="Sistema\Analisis\Interpretes\CHISON\Interprete_CHISON.cs" />
+    <Compile Include="Sistema\Analisis\Interpretes\CQL\Gramatica_CQL.cs" />
+    <Compile Include="Sistema\Analisis\Interpretes\CQL\Interprete_CQL.cs" />
     <Compile Include="Sistema\Analisis\Interpretes\Lup\Gramatica_Lup.cs" />
     <Compile Include="Sistema\Analisis\Interpretes\Lup\Interprete_Lup.cs" />
   </ItemGroup>

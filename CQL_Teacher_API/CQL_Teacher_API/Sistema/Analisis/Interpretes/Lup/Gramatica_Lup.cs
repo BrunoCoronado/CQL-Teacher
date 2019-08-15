@@ -10,7 +10,7 @@ namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.Lup
     public class Gramatica_Lup : Grammar
     {
 
-        public ArrayList errores;
+        //public ArrayList errores;
 
         public Gramatica_Lup() : base(caseSensitive: false)
         {
