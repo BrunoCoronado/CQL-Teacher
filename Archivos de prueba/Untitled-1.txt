@@ -1,0 +1,41 @@
+/*
+//PRUEBAS SOBRE BASES DE DATOS
+//creamos la base de datos colegio
+
+CREATE DATABASE IF NOT EXISTS colegio;
+
+//usamos la base de datos colegio
+
+USE colegio;
+
+//creamos la base de datos contabilidad
+
+CREATE DATABASE contabilidad;
+
+//dropeamos la base de datos colegio
+
+DROP DATABASE colegio;
+
+//usamos la base de datos contabilidad
+
+USE contabilidad;
+
+*/
+
+//PRUEBAS SOBRE TABLAS
+
+CREATE TABLE EspeciesDeMono (
+    especie string PRIMARY KEY,
+    nombre_comun string,
+    poblacion int,
+    tamanio_promedio int
+);
+
+CREATE TABLE Muro (
+    usuario_id int,
+    mes_publicado int,
+    hora_publicado double,
+    contenido string,
+    publicado_por string,
+    PRIMARY KEY (usuario_id, mes_publicado, hora_publicado)
+);

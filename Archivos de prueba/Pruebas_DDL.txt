@@ -1,0 +1,67 @@
+/*
+//PRUEBAS SOBRE BASES DE DATOS
+//creamos la base de datos colegio
+
+CREATE DATABASE IF NOT EXISTS colegio;
+
+//usamos la base de datos colegio
+
+USE colegio;
+
+//creamos la base de datos contabilidad
+
+CREATE DATABASE contabilidad;
+
+//dropeamos la base de datos colegio
+
+DROP DATABASE colegio;
+
+//usamos la base de datos contabilidad
+
+USE contabilidad;
+
+*/
+
+/*
+//PRUEBAS SOBRE TABLAS
+
+//creacion tabla EspeciesDeMono
+
+CREATE TABLE EspeciesDeMono (
+    especie string PRIMARY KEY,
+    nombre_comun string,
+    poblacion int,
+    tamanio_promedio int
+);
+
+//creacion tabla Muro
+
+CREATE TABLE Muro (
+    usuario_id counter,
+    mes_publicado counter,
+    hora_publicado counter,
+    PRIMARY KEY (usuario_id, mes_publicado, hora_publicado),
+    contenido string,
+    publicado_por string
+);
+*/
+
+//agregamos columnas a la tabla EspeciesDeMono
+
+ALTER TABLE EspeciesDeMono ADD altura int, peso double;
+
+//quitamos columnas a la tabla Muro
+
+ALTER TABLE Muro DROP publicado_por, contenido;
+
+//dropeamos la tabla EspeciesDeMono
+
+DROP TABLE IF EXISTS EspeciesDeMono;
+
+//truncamos la tabla Muro
+
+TRUNCATE TABLE Muro;
+
+//dropeamos la tabla Muro
+
+DROP TABLE Muro;

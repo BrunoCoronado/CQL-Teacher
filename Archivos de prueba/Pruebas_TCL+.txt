@@ -1,0 +1,9 @@
+//pruebas comandos TCL
+
+COMMIT;
+
+ROLLBACK;
+
+COMMIT;
+
+ROLLBACK;

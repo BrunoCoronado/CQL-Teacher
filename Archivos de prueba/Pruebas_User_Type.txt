@@ -1,0 +1,39 @@
+
+//creamos un user type del tipo estudiante con sentencia 'if not exist'
+CREATE TYPE IF NOT EXISTS Estudiante(
+    carnet INT,
+    nombre STRING
+);  
+
+//creamos otro user type del tipo catedratico
+
+CREATE TYPE catedratico(
+    cui INT,
+    nombre STRING,
+    activo BOOLEAN,
+    fecha_Nacimiento DATE,
+    hora_Entrada TIME
+);  
+
+/*
+NOTA -> *******declaracion e instanciacion lo vamos a trabajar cuando se entre de lleno al lenguaje, por ahora solo estructuras
+*/
+
+//alteramos el user type estudiante y le agregamos el campo fecha fecha_Nacimiento y hora salida
+
+ALTER TYPE estudiante add(
+    fecha_Nacimiento DATE,
+    hora_Salida TIME
+);
+
+//alteramos el user type catedratico y le removemos los campos fecha_Nacimiento y hora_Entrada
+
+ALTER TYPE catedratico delete(
+    fecha_Nacimiento,
+    hora_Entrada
+);
+
+//eliminamos los user type estudiante y catedratico
+
+DELETE TYPE estudiante;
+DELETE TYPE catedratico;
