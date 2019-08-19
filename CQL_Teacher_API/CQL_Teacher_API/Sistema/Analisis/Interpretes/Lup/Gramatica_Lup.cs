@@ -15,7 +15,7 @@ namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.Lup
         public Gramatica_Lup() : base(caseSensitive: false)
         {
             //ERRORES
-            errores = new ArrayList();
+            //errores = new ArrayList();
 
             //ACEPTACION
             var aceptacion = ToTerm("$");
