@@ -1,5 +1,6 @@
-/*
 //PRUEBAS SOBRE BASES DE DATOS
+
+/*
 //creamos la base de datos colegio
 
 CREATE DATABASE IF NOT EXISTS colegio;
@@ -12,6 +13,8 @@ USE colegio;
 
 CREATE DATABASE contabilidad;
 
+CREATE DATABASE IF NOT EXISTS colegio;
+
 //dropeamos la base de datos colegio
 
 DROP DATABASE colegio;
@@ -19,32 +22,40 @@ DROP DATABASE colegio;
 //usamos la base de datos contabilidad
 
 USE contabilidad;
-
 */
 
-/*
 //PRUEBAS SOBRE TABLAS
+
+USE default;
 
 //creacion tabla EspeciesDeMono
 
-CREATE TABLE EspeciesDeMono (
+CREATE TABLE IF NOT EXISTS EspeciesDeMono (
     especie string PRIMARY KEY,
     nombre_comun string,
     poblacion int,
     tamanio_promedio int
 );
 
-//creacion tabla Muro
+//creacion tabla Muro con llave compuesta
 
 CREATE TABLE Muro (
-    usuario_id counter,
-    mes_publicado counter,
-    hora_publicado counter,
     PRIMARY KEY (usuario_id, mes_publicado, hora_publicado),
-    contenido string,
+    usuario_id counter,
+    mes_publicado couNTER,
+    hora_publicado counter,
+    contenido STRING,
     publicado_por string
 );
-*/
+
+CREATE TABLE IF NOT EXISTS Muro (
+    PRIMARY KEY (usuario_id, mes_publicado, hora_publicado),
+    usuario_id counter,
+    mes_publicado couNTER,
+    hora_publicado counter,
+    contenido STRING,
+    publicado_por string
+);
 
 //agregamos columnas a la tabla EspeciesDeMono
 
@@ -58,10 +69,18 @@ ALTER TABLE Muro DROP publicado_por, contenido;
 
 DROP TABLE IF EXISTS EspeciesDeMono;
 
+
+//truncamos la tabla estudiante -> esta creada por defecto para pruebas
+
+TRUNCATE TABLE estudiante;
+
 //truncamos la tabla Muro
 
+/*
 TRUNCATE TABLE Muro;
 
 //dropeamos la tabla Muro
 
 DROP TABLE Muro;
+
+*/

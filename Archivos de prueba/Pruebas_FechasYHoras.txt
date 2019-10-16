@@ -1,0 +1,5 @@
+date @fechaMin = '0000-00-00'; //fecha minima
+date @fechaMax = '2999-12-31'; //fecha maxima
+
+time @horaMin = '00:00:00'; //hora minima
+time @horaMax = '24:60:60'; //hora maxima

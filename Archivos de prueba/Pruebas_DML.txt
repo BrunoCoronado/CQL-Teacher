@@ -1,0 +1,58 @@
+
+//PRUEBAS DML
+
+/*
+* PRUEBAS INSERT 
+->
+
+//INSERCION NORMAL
+INSERT INTO Estudiante VALUES ( 1, "Juan Valdez" , "Colombia");
+
+//INSERCION ESPECIAL
+INSERT INTO Estudiante( id, Nombre) VALUES ( 2, "Lilly Collins");
+-->*/
+
+/*
+* PRUEBAS UPDATE Y WHERE
+->
+
+UPDATE Estudiante 
+SET Nombre = "Pao", Edad=21 
+WHERE Nombre =="Paola" && Edad <18 ;
+
+UPDATE UserActions 
+SET total = total + 2 
+WHERE userID = "B70DE1D0-9908-4AE3-BE34-5573E5B09F14" && action = "click";
+
+-->*/
+
+/*
+* PRUEBAS DELETE Y WHERE
+->
+DELETE FROM Estudiante WHERE Nombre=="Julio" && Edad<18;
+
+DELETE FROM Estudiante WHERE carnet IN (201901, 201902, 201903);
+
+DELETE FROM Estudiante;
+-->*/
+
+/*
+* PRUEBAS SELECT
+*/
+
+SELECT name, occupation 
+FROM users 
+WHERE userid IN (199, 200, 207);
+
+SELECT alumno.carnet 
+FROM Estudiante;
+
+SELECT time, value
+FROM events
+WHERE event_type == "myEvent" && time > '2011-02-03' && time <= '2012-01-01';
+
+SELECT alumno.carnet 
+FROM Estudiante
+ORDER BY alumno.carnet DESC, alumno.cui
+LIMIT 5 + alumno.carnet
+;

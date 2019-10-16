@@ -10,30 +10,22 @@ CREATE TYPE IF NOT EXISTS Estudiante(
 CREATE TYPE catedratico(
     cui INT,
     nombre STRING,
-    activo BOOLEAN,
-    fecha_Nacimiento DATE,
-    hora_Entrada TIME
+    activo BOOLEAN
 );  
 
-/*
-NOTA -> *******declaracion e instanciacion lo vamos a trabajar cuando se entre de lleno al lenguaje, por ahora solo estructuras
-*/
+//creamos otro user type con otro usertype y collections
 
-//alteramos el user type estudiante y le agregamos el campo fecha fecha_Nacimiento y hora salida
+CREATE TYPE clase(
+    catedratico cat,
+    estudiantes List 
+);  
 
-ALTER TYPE estudiante add(
-    fecha_Nacimiento DATE,
-    hora_Salida TIME
-);
+clase @claseA;
+clase @claseB = new Clase;
+clase @claseC = { new catedratico, new list<estudiante> } as clase;
+@claseC = { { 12345678, "cat1", true } as catedratico, [ new estudiante, { 201705284, "est1" } as estudiante ] } as clase;
+@claseC = { { 12345678, "cat1", true } as catedratico, [ new estudiante, { 201705284, "est1" } as estudiante ] } as clase;
 
-//alteramos el user type catedratico y le removemos los campos fecha_Nacimiento y hora_Entrada
-
-ALTER TYPE catedratico delete(
-    fecha_Nacimiento,
-    hora_Entrada
-);
-
-//eliminamos los user type estudiante y catedratico
-
-DELETE TYPE estudiante;
-DELETE TYPE catedratico;
+Estudiante @est3 = {201504481, "Julio Arango"} as Estudiante;
+Int @carnet = @est3.carnet;
+@est3.nombre = "Julius";

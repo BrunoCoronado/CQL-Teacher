@@ -2,18 +2,17 @@
 
 //Creamos dos usuario de prueba;
 
-CREATE USER usr_prueba_1 WITH PASSWORD abc;
+CREATE USER usr_prueba_1 WITH PASSWORD "abc";
 
-CREATE USER usrPrueba2 WITH PASSWORD abc1234;
+CREATE USER usrPrueba2 WITH PASSWORD "abc1234";
 
 //Damos permisos a bases de datos de prueba
+GRANT usr_prueba_1 ON default;
 
-GRANT usr_prueba_1 ON db1;
-
-GRANT usrPrueba2 ON DB2;
+GRANT usrPrueba2 ON default;
 
 //Quitamos los permisos a las bases de datos
 
-REVOKE usrPrueba2 ON DB2;
+REVOKE usrPrueba2 ON default;
 
-REVOKE usr_prueba_1 ON db1;
+REVOKE usr_prueba_1 ON default;

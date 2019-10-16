@@ -1,0 +1,9 @@
+//PRUEBAS FCL
+
+//DECLARACION DE VARIABLES
+
+int enteroA, enteroB, enteroC;
+int enteroD = 10 + 30;
+double decimalA = 5.0 + 5.5;
+
+

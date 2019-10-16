@@ -250,5 +250,14 @@ namespace CQL_Teacher_API.Sistema.Analisis.Interpretes.CQL
 
             #endregion
         }
+        public override void ReportParseError(ParsingContext context)
+        {
+            base.ReportParseError(context);
+            if (context.CurrentToken.ValueString.Contains("Invalid character"))
+                Console.WriteLine("ERROR LEXICO NO SE RECONOCIO ESTE SIMBOLO " + context.CurrentToken.ValueString.ToString() + " EN LINEA " + (context.Source.Location.Line + 1) + " Y COLUMNA " + context.Source.Location.Column);
+            else
+                Console.WriteLine("ERROR SINTACTICO NO SE ESPERABA ESTE SIMBOLO " + context.CurrentToken.ValueString.ToString() + " EN LINEA " + (context.Source.Location.Line + 1) + " Y COLUMNA " + context.Source.Location.Column);
+        }
     }
+
 }
